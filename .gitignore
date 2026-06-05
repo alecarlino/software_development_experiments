@@ -1,0 +1,49 @@
+# --- macOS / OS junk ---
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+
+# --- pytest / coverage / benchmark ---
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.benchmarks/
+.mypy_cache/
+.ruff_cache/
+
+# --- editor / IDE ---
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# --- Claude Code session state ---
+.claude/
+
+# --- Secrets ---
+.env
+.env.*
+!.env.example
+
+# --- Runtime artefact with personal data (dashboard email form) ---
+# subscriptions.json can hold real email addresses; keep it local.
+# NOTE: the generated deliverables (alert_log.txt, *.png, *.csv, *.npy,
+# *.gif, optimal_schedule.csv, validation_report.txt) are intentionally
+# committed and are NOT ignored here.
+subscriptions.json
+rainfall_alert/subscriptions.json

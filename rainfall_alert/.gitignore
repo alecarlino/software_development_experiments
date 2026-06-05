@@ -1,0 +1,40 @@
+# --- macOS / OS junk ---
+.DS_Store
+Thumbs.db
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+env/
+
+# --- pytest / coverage / benchmark ---
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.benchmarks/
+
+# --- editor / IDE ---
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# --- Claude Code session state ---
+.claude/
+
+# --- Runtime artefacts created by the app ---
+# subscriptions.json is produced by the dashboard form and may hold
+# personal email addresses; keep it local.
+# alert_log.txt is a CLAUDE.md-listed deliverable and IS committed; new
+# Red alerts will keep appending to it on real runs.
+subscriptions.json
+
+# --- Secrets (just in case anyone tries) ---
+.env
+.env.*
+!.env.example
