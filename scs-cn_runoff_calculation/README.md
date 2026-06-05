@@ -152,7 +152,7 @@ scs-cn_runoff_calculation/
 ├── additional_plots/               # snapshots of the other three figures
 │   ├── sensitivity.png
 │   ├── scs-cn_vs_rational_method.png
-│   └── Iteractive_plot.png
+│   └── Interactive_plot.png
 ├── CLAUDE.md                       # behavioural rules + domain spec used during development
 ├── prompt_log.md                   # iteration-by-iteration interaction log with the AI agent
 └── README.md                       # this file
