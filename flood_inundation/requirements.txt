@@ -1,0 +1,6 @@
+numpy==1.26.4
+matplotlib==3.10.8
+Pillow==12.1.1                   # used by matplotlib's PillowWriter for the GIF, and by the tests
+
+# Tests
+pytest==9.0.3

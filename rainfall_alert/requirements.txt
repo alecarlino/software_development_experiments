@@ -1,0 +1,11 @@
+# Runtime
+requests==2.33.1
+streamlit==1.51.0
+streamlit-folium>=0.26.2        # 0.27.x needs Python 3.11+; floor kept 3.10-compatible
+streamlit-autorefresh==1.0.1
+folium==0.20.0
+pandas==2.3.3
+altair==5.5.0                   # pulled in transitively by streamlit; pinned here for clarity
+
+# Tests
+pytest==9.0.3

@@ -39,6 +39,8 @@ The shipped synthetic DEM uses these parameters:
 | Deliverable water levels | 40 m and 50 m |
 | Flood-curve sweep | 30–80 m |
 
+The 30–80 m figure is the bare terrain range. The committed `dem_data.npy` reaches ~100 m, because the building footprints are burned in as 100 m barriers (446 cells) that never flood.
+
 Real DEMs come from sources such as USGS SRTM (30 m resolution) and ALOS PALSAR (12.5 m). Export one to Esri ASCII Grid (`.asc`) and `load_real_dem` reads it with NumPy alone, keeping the header metadata and mapping NODATA cells to NaN.
 
 ---
@@ -46,23 +48,18 @@ Real DEMs come from sources such as USGS SRTM (30 m resolution) and ALOS PALSAR 
 ## Requirements
 
 - **Python 3.10 or newer.**
-- **NumPy and Matplotlib.** Both are needed even to import the module, since it pulls in Matplotlib at the top. Matplotlib's bundled Pillow writer produces the GIF, so nothing else is required for the animation.
+- **NumPy, Matplotlib, and Pillow.** NumPy and Matplotlib are needed even to import the module, since it pulls in Matplotlib at the top. Matplotlib's `PillowWriter` produces the GIF, so `Pillow` is needed for the animation (and by the tests).
 
 | Package | Used by | Notes |
 |---|---|---|
 | `numpy` | model + plots | the DEM grid, masks, depth arrays |
-| `matplotlib` | plots + GIF | the five figures and the animated GIF (via its bundled Pillow writer) |
+| `matplotlib` | plots + GIF | the five figures and the animated GIF (via its `PillowWriter`) |
+| `Pillow` | GIF | backs Matplotlib's `PillowWriter` to encode `flood_animation.gif`; also used by the tests |
 
-Install the two packages:
-
-```bash
-pip install numpy matplotlib
-```
-
-For the test suite, also install `pytest`:
+Install the dependencies:
 
 ```bash
-pip install pytest
+pip install -r requirements.txt
 ```
 
 ---
@@ -167,6 +164,7 @@ On the shipped DEM it reports PASS: the flooded area climbs from 0 % at 30 m to 
 ```
 flood_inundation/
 ├── flood_inundation.py                 # core: DEM, flooding, routing, volume, plots, GIF
+├── requirements.txt                    # pinned dependencies for this project
 ├── dem_data.npy                        # generated: 100×100 synthetic DEM with barriers
 ├── flood_extent_40m.png                # generated deliverable: flood extent at 40 m
 ├── flood_extent_50m.png                # generated deliverable: flood extent at 50 m

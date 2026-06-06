@@ -52,11 +52,13 @@ The core module `scscn_runoff.py` and the test suite `test_scscn.py` import noth
 | `numpy` | `sensitivity_analysis.py` | samples the rainfall axis (`linspace`) |
 | `matplotlib` | `sensitivity_analysis.py` | static plots and the interactive sliders |
 
-Install the two plotting packages:
+Install the dependencies (NumPy and Matplotlib for the plots, plus `pytest` for the test suite):
 
 ```bash
-pip install numpy matplotlib
+pip install -r requirements.txt
 ```
+
+The core module `scscn_runoff.py` and the `unittest` suite still run on a bare Python install; `requirements.txt` is only needed for the plots and for running the tests under `pytest`.
 
 ---
 
@@ -147,6 +149,7 @@ Notable cases:
 scs-cn_runoff_calculation/
 ├── scscn_runoff.py                 # core library: 4 runoff functions, standard library only
 ├── sensitivity_analysis.py         # Matplotlib plots + interactive sliders
+├── requirements.txt                # pinned dependencies for this project
 ├── test_scscn.py                   # 27-test unittest suite
 ├── runoff_comparison.png           # generated deliverable plot
 ├── additional_plots/               # snapshots of the other three figures

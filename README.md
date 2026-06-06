@@ -46,7 +46,7 @@ Implements the SCS-CN method for direct runoff, turning a rainfall depth `P` and
 
 ## 3 · Reservoir Dispatch Optimization
 
-Optimises seven days of reservoir releases during a drought, trading hydropower revenue against downstream ecological flow. Solves the dispatch as a linear program with scipy and traces the trade-off as a Pareto frontier. Holding the ecological minimum costs 0.44% of revenue.
+Optimises seven days of reservoir releases during a drought, trading hydropower revenue against downstream ecological flow. Solves the dispatch as a linear program with scipy and traces the trade-off as a Pareto frontier. Holding the ecological minimum costs 0.44% of revenue. Revenue here is a linear proxy (release × price × Δt), so the schedule maximises that proxy and won't match the example schedule in the guide. I also include a head-coupled dollar model for comparison.
 
 | Feature | Status |
 |---------|--------|
@@ -85,4 +85,26 @@ Maps flood inundation over a Digital Elevation Model: which cells flood at a giv
 
 ---
 
-**Stack:** Python 3.10+, with `numpy`, `scipy`, `matplotlib`, `requests`, `streamlit`, and `folium` split across the projects. Open any folder's README for setup, usage, and tests.
+## Tests and validation
+
+Each project has its own test suite, and I check the numbers against the worked examples in the assignment guides. All four suites pass.
+
+| Experiment | Tests | What the suite checks |
+|------------|-------|-----------------------|
+| Rainfall Alert | 26 | Green / Yellow / Red thresholds at 10 and 20 mm/h, API error handling, a UTC-timestamped alert log |
+| SCS-CN Runoff | 27 (+114 subtests) | `calculate_runoff(50, 80) = 13.80 mm`, the 13.8 mm worked out in the guide; `Q ≤ P` and runoff growing with `CN` across a full `P`×`CN` grid |
+| Reservoir Dispatch | 22 | all five constraints hold; the storage mass-balance error is about 6×10⁻¹¹ m³ |
+| Flood Inundation | 63 | the flooded area never shrinks as the water rises, the deepest point equals water level minus the lowest elevation, and the flooded share stays between 0 and 100% |
+| **Total** | **138** | |
+
+Run a project's suite from inside its folder:
+
+```bash
+python -m pytest
+```
+
+Each folder's `requirements.txt` lists the libraries that project needs.
+
+---
+
+**Stack:** Python 3.10+, with `numpy`, `scipy`, `matplotlib`, `requests`, `streamlit`, and `folium` split across the projects. Each folder has its own `requirements.txt`; run `pip install -r requirements.txt` inside a folder to install what that experiment needs. Open any folder's README for setup, usage, and tests.

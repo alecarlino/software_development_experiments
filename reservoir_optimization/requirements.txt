@@ -1,0 +1,6 @@
+numpy==1.26.4
+scipy>=1.15.3                    # 1.16+ needs Python 3.11+; floor kept 3.10-compatible
+matplotlib==3.10.8
+
+# Tests
+pytest==9.0.3

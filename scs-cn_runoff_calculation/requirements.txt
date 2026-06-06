@@ -1,0 +1,8 @@
+# calculate_runoff() itself is pure standard library.
+# numpy + matplotlib are needed for the sensitivity plots, the interactive
+# slider plot, and the test suite.
+numpy==1.26.4
+matplotlib==3.10.8
+
+# Tests
+pytest==9.0.3

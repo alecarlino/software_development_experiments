@@ -42,12 +42,12 @@ A Python tool that monitors rainfall for a city using the [OpenWeatherMap](https
 Install everything in one go:
 
 ```bash
-pip install requests streamlit folium pandas streamlit-folium streamlit-autorefresh
+pip install -r requirements.txt
 ```
 
 The CLI needs only `requests` and imports nothing dashboard-related at startup, so installing the full set does no harm.
 
-**For running the test suite** (optional), also install `pytest`:
+`requirements.txt` already includes `pytest` for the test suite. To install it on its own:
 
 ```bash
 pip install pytest
@@ -187,11 +187,18 @@ The suite uses pytest's `tmp_path` and `monkeypatch` fixtures, so it never write
 ```
 rainfall_alert/
 ├── weather_monitor.py          # the whole application (CLI + dashboard)
+├── requirements.txt            # pinned dependencies for this project
 ├── CLAUDE.md                   # behavioural rules + domain spec used during development
 ├── prompt_log.md               # iteration-by-iteration interaction log with the AI agent
 ├── alert_log.txt               # created on first Red alert
 ├── subscriptions.json          # created on first dashboard subscription
 ├── README.md                   # this file
+├── screenshots/                # dashboard screenshots used in this README
+│   ├── interface.png
+│   ├── welcome_page.png
+│   ├── dashboard_page.png
+│   ├── city_selection_bar.png
+│   └── errors_managements.png
 ├── .streamlit/
 │   └── config.toml             # dark theme for the dashboard
 └── tests/

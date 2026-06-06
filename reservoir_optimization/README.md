@@ -56,13 +56,13 @@ Substituting the mass balance into the storage bounds turns them into linear ine
 | `scipy` | model | `linprog` (HiGHS), `minimize` (SLSQP, L-BFGS-B) |
 | `matplotlib` | plots | the four PNG figures, forced to the headless `Agg` backend |
 
-Install the three packages:
+Install the dependencies:
 
 ```bash
-pip install numpy scipy matplotlib
+pip install -r requirements.txt
 ```
 
-The script needs no display: it sets Matplotlib's `Agg` backend in code and writes the figures straight to disk. For the test suite, also install `pytest`.
+The script needs no display: it sets Matplotlib's `Agg` backend in code and writes the figures straight to disk. The test suite needs `pytest`, which `requirements.txt` includes.
 
 ---
 
@@ -150,6 +150,7 @@ Notable cases:
 ```
 reservoir_optimization/
 ├── reservoir_optimize.py              # the whole model: LP reference + extensions, one file
+├── requirements.txt                   # pinned dependencies for this project
 ├── optimal_schedule.csv               # generated: 7-day optimal release schedule
 ├── tradeoff_analysis.png              # generated: Pareto frontier (deliverable)
 ├── validation_report.txt              # generated: 5/5 constraint checks
